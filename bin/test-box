@@ -6,7 +6,7 @@ if [ "${DEBUG:=false}" = "true" ]; then
 fi
 
 usage() {
-  echo "usage: $(basename $0) BOX_PATH [vmware|virtualbox|parallels]"
+  echo "usage: $(basename $0) BOX_PATH [vmware|virtualbox|parallels|libvirt]"
   echo
   echo "Run automated tests against a local *.box file"
 }
@@ -17,9 +17,9 @@ args() {
     exit 0
   fi
 
-  if [[ ! $2 =~ ^(vmware|virtualbox|parallels)$ ]]; then
+  if [[ ! $2 =~ ^(vmware|virtualbox|parallels|libvirt)$ ]]; then
     echo "$(basename $0): illegal platform $2"
-    echo "Valid platforms: vmware|virtualbox|parallels"
+    echo "Valid platforms: vmware|virtualbox|parallels|libvirt"
     usage
     exit 1
   fi

@@ -10,7 +10,7 @@ We no longer provide pre-built binaries for these templates.
 
 ## Building the Vagrant boxes with Packer
 
-To build all the boxes, you will need [VirtualBox](https://www.virtualbox.org/wiki/Downloads),
+To build all the boxes, you will need Libvirt, [VirtualBox](https://www.virtualbox.org/wiki/Downloads),
 [VMware Fusion](https://www.vmware.com/products/fusion)/[VMware Workstation](https://www.vmware.com/products/workstation) and
 [Parallels](http://www.parallels.com/products/desktop/whats-new/) installed.
 
@@ -37,6 +37,7 @@ The boxcutter templates currently support the following desktop virtualization s
 * `parallels-iso` - [Parallels](http://www.parallels.com/products/desktop/whats-new/) desktop virtualization (Requires the Pro Edition - Desktop edition won't work)
 * `virtualbox-iso` - [VirtualBox](https://www.virtualbox.org/wiki/Downloads) desktop virtualization
 * `vmware-iso` - [VMware Fusion](https://www.vmware.com/products/fusion) or [VMware Workstation](https://www.vmware.com/products/workstation) desktop virtualization
+* `qemu` - [Libvirt](https://libvirt.org/) desktop virtualization (Requires Linux to Run)
 
 ## Building the Vagrant boxes with the box script
 
@@ -48,6 +49,10 @@ the following to build CentOS 7 for all providers:
 Or if you just want to build CentOS 7 for VirtualBox:
 
     $ bin/box build centos7 virtualbox
+
+Or if you just want to build CentOS 7 for Libvirt:
+
+    $ bin/box build centos7 libvirt
 
 ## Building the Vagrant boxes with the Makefile
 
@@ -64,6 +69,8 @@ in your favourite CI tool:
     make assure  # Run tests against all the boxes
     make deliver # Upload box artifacts to a repository
     make clean   # Clean up build detritus
+
+Remark: virtualbox and Libvirt can not run at the same time.
 
 ### Proxy Settings
 
